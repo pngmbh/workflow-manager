@@ -1,0 +1,19 @@
+version: 2
+jobs:
+  build:
+    machine:
+      docker_layer_caching: true
+    steps:
+      - checkout
+      - run:
+          name: Bootstrap
+          command: make bootstrap
+      - run:
+          name: Running tests
+          command: make test
+      - run:
+          name: Running style
+          command: make test-style
+      - run:
+          name: Running coverage
+          command: make test-cover
